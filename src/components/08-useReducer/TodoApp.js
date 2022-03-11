@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import { todoReducer } from './todoReducer';
+import { useForm } from '../../hooks/useForm';
 import './styles.css';
 
 const initialState = [{
@@ -12,16 +13,20 @@ export const TodoApp = () => {
 
     const [ todos, dispatch ] = useReducer( todoReducer, initialState);
 
-    console.log( todos );
+    const [ { description }, handleInputChange, reset ] = useForm({
+        description: ''
+    });
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
+
+        if ( description.trim().length <= 1 ) return;
 
         console.log('Nueva tarea.');
 
         const newTodo = {
             id: new Date().getTime(),
-            desc: 'Nueva tarea',
+            desc: description,
             done: false,
         };
 
@@ -31,6 +36,8 @@ export const TodoApp = () => {
         };
 
         dispatch( action );
+
+        reset();
     };
 
     return (
@@ -69,6 +76,8 @@ export const TodoApp = () => {
                             className='form-control'
                             placeholder='Debo de....'
                             autoComplete='off'
+                            value={ description }
+                            onChange={ handleInputChange }
                         />
                         <div className="d-grid gap-2">
                             <button
