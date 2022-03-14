@@ -16,13 +16,15 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <NavBar />
-                <Routes>
-                    // NOTE: After V6 by default exact is defined, this is to match exactly the given route.
-                    <Route exact path='/' element={ <HomeScreen /> } />
-                    <Route path='/about' element={ <AboutScreen /> } />
-                    <Route path='/login' element={ <LoginScreen /> } />
-                    <Route path='*' element={ <Navigate to="/" /> } />
-                </Routes>
+                <div className="container">
+                    <Routes>
+                        // NOTE: After V6 by default exact is defined, this is to match exactly the given route.
+                        <Route exact path='/' element={ <HomeScreen /> } />
+                        <Route path='/about' element={ <AboutScreen /> } />
+                        <Route path='/login' element={ <LoginScreen /> } />
+                        <Route path='*' element={ <Navigate to="/" /> } />
+                    </Routes>
+                </div>
             </div>
         </Router>
     );
