@@ -13,4 +13,24 @@ describe('Pruebas en el componente todoReducer.', () => {
 
     });
 
+    test('debe de agregar un TODO.', () => {
+
+        const newTodo = {
+            id: 3,
+            desc: 'Aprender Node',
+            done: false,
+        };
+
+        const action = {
+            type: 'add',
+            payload: newTodo
+        };
+
+        const state = todoReducer( demoTodos, action );
+
+        expect( state.length ).toBe( 3 );
+        expect( state ).toEqual( [ ...demoTodos, newTodo ] );
+
+    });
+
 });
