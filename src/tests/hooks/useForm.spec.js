@@ -39,4 +39,26 @@ describe('Pruebas en el hook useForm', () => {
 
     });
 
+    test('debe de reestablecer el formulario con RESET.', () => {
+
+        const { result } = renderHook( () => useForm( initialForm ) );
+        const [ , handleInputChange, reset ] = result.current;
+
+        act( () => {
+            handleInputChange({
+                target: {
+                    name: 'name',
+                    value: 'Mariana',
+                },
+            });
+
+            reset();
+        });
+
+        const [ formValues ] = result.current;
+
+        expect( formValues ).toEqual( initialForm );
+
+    });
+
 });
