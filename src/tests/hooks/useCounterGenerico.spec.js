@@ -14,4 +14,14 @@ describe('Pruebas en useCounter hook.', () => {
 
     });
 
+    test('debe de retornar el valor especificado en el counter.', () => {
+
+        const value = 100;
+
+        const { result } = renderHook( () => useCounterGenerico( value ) );
+
+        expect( result.current.counter ).toBe( value );
+
+    });
+
 });
