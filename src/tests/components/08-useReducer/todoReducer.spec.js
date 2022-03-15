@@ -33,4 +33,18 @@ describe('Pruebas en el componente todoReducer.', () => {
 
     });
 
+    test('debe de eliminar un TODO.', () => {
+
+        const action = {
+            type: 'delete',
+            payload: 2,
+        };
+
+        const state = todoReducer( demoTodos, action );
+
+        expect( state.length ).toBe( 1 );
+        expect( state ).toEqual([ demoTodos[0] ]);
+
+    });
+
 });
