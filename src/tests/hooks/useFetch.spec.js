@@ -15,4 +15,18 @@ describe('Pruebas en useFetch hook.', () => {
 
     });
 
+    test('debe de retornar la información tras procesar el fetch.', async() => {
+
+        const { result, waitForNextUpdate } = renderHook( () => useFetch('https://www.breakingbadapi.com/api/quotes/1') );
+
+        await waitForNextUpdate();
+
+        const { data, loading, error } = result.current;
+
+        expect( data.length ).toBe( 1 );
+        expect( loading ).toBe( false );
+        expect( error ).toBe( null );
+
+    });
+
 });
