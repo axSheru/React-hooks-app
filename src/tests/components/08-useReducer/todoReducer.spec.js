@@ -47,4 +47,18 @@ describe('Pruebas en el componente todoReducer.', () => {
 
     });
 
+    test('debe de hacer el toggle a un TODO.', () => {
+
+        const action = {
+            type: 'toggle',
+            payload: 1,
+        };
+
+        const state = todoReducer( demoTodos, action );
+
+        expect( state[0].done ).toBeTruthy();
+        expect( state[1] ).toEqual( demoTodos[1] );
+
+    });
+
 });
