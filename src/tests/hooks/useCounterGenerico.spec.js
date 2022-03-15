@@ -39,4 +39,19 @@ describe('Pruebas en useCounter hook.', () => {
 
     });
 
+    test('debe de decrementar el counter en 1.', () => {
+
+        const value = 100;
+
+        const { result } = renderHook( () => useCounterGenerico( value ) );
+        const { decrement } = result.current;
+
+        act( () => {
+            decrement();
+        });
+
+        expect( result.current.counter ).toBe( value - 1 );
+
+    });
+
 });
