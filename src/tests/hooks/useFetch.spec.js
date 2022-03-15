@@ -29,4 +29,18 @@ describe('Pruebas en useFetch hook.', () => {
 
     });
 
+    test('debe de manejar el error en la petición.', async() => {
+
+        const { result, waitForNextUpdate } = renderHook( () => useFetch('https://reqres.in/apid/users?page=2') );
+
+        await waitForNextUpdate();
+
+        const { data, loading, error } = result.current;
+
+        expect( data ).toBe( null );
+        expect( loading ).toBe( false );
+        expect( error ).toBe( 'No se pudo obtener la información.' );
+
+    });
+
 });
