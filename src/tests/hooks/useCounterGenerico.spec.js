@@ -54,4 +54,20 @@ describe('Pruebas en useCounter hook.', () => {
 
     });
 
+    test('debe de resetear el counter al valor dado originalmente.', () => {
+
+        const value = 100;
+
+        const { result } = renderHook( () => useCounterGenerico( value ) );
+        const { increment, reset } = result.current;
+
+        act( () => {
+            increment();
+            reset();
+        });
+
+        expect( result.current.counter ).toBe( value );
+
+    });
+
 });
