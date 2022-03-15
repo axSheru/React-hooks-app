@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, act } from "@testing-library/react-hooks";
 import { useCounterGenerico } from "../../hooks/useCounterGenerico";
 
 describe('Pruebas en useCounter hook.', () => {
@@ -21,6 +21,21 @@ describe('Pruebas en useCounter hook.', () => {
         const { result } = renderHook( () => useCounterGenerico( value ) );
 
         expect( result.current.counter ).toBe( value );
+
+    });
+
+    test('debe de incrementar el counter en 1.', () => {
+
+        const value = 100;
+
+        const { result } = renderHook( () => useCounterGenerico( value ) );
+        const { increment } = result.current;
+
+        act( () => {
+            increment();
+        });
+
+        expect( result.current.counter ).toBe( value + 1 );
 
     });
 
