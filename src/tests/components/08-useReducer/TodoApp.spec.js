@@ -31,4 +31,16 @@ describe('Pruebas en el componente TodoApp.', () => {
 
     });
 
+    test('debe de eliminar un TODO.', () => {
+
+        wrapper.find( 'TodoAdd' ).prop( 'handleAddTodo' )( demoTodos[0] );
+        
+        expect( wrapper.find( 'h1' ).text().trim() ).toBe( 'TodoApp (1)' );
+        
+        wrapper.find( 'TodoList' ).prop( 'handleDelete' )( demoTodos[0].id );
+        
+        expect( wrapper.find( 'h1' ).text().trim() ).toBe( 'TodoApp (0)' );
+
+    });
+
 });
