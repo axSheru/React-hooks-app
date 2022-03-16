@@ -36,4 +36,10 @@ describe('Pruebas en el componente TodoListItem.', () => {
         
     });
 
+    test('debe de mostrar el texto correctamente.', () => {
+
+        expect( wrapper.find( 'p' ).text().trim() ).toBe( `1. ${ demoTodos[0].desc }` );
+        
+    });
+
 });
