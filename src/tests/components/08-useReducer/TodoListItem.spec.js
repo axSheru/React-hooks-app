@@ -42,4 +42,20 @@ describe('Pruebas en el componente TodoListItem.', () => {
         
     });
 
+    test('debe de tener la clase complete si el TODO.done está en true.', () => {
+
+        const todo = demoTodos[0];
+        todo.done = true;
+
+        const wrapper = shallow( <TodoListItem
+            todo={ todo }
+            i={ 0 }
+            handleDelete={ handleDelete }
+            handleToggle={ handleToggle }        
+        /> );
+
+        expect( wrapper.find( 'p' ).hasClass( 'complete' ) ).toBeTruthy();
+
+    });
+
 });
