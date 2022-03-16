@@ -26,4 +26,29 @@ describe('Pruebas en el componente TodoAdd.', () => {
         
     });
 
+    test('debe de llamar la función handleAddTodo.', () => {
+
+        const value = 'Hola mundo';
+
+        wrapper.find( 'input' ).simulate('change', {
+            target: {
+                value,
+                name: 'description'
+            }
+        });
+
+        const formSubmit = wrapper.find( 'form' ).prop( 'onSubmit' );
+        
+        formSubmit({ preventDefault(){} });
+
+        expect( handleAddTodo ).toHaveBeenCalled();
+        expect( handleAddTodo ).toHaveBeenCalledWith({
+            id: expect.any( Number ),
+            desc: value,
+            done: false,
+        });
+        expect( wrapper.find( 'input' ).prop( 'value' ) ).toBe( '' );
+        
+    });
+
 });
