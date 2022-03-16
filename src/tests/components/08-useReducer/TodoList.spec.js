@@ -19,4 +19,11 @@ describe('Pruebas en el componente TodoList.', () => {
 
     });
 
+    test('debe de tener dos <TodoListItem />.', () => {
+
+        expect( wrapper.find( 'TodoListItem' ).length ).toBe( demoTodos.length );
+        expect( wrapper.find( 'TodoListItem' ).at(0).prop( 'handleDelete' ) ).toEqual( expect.any( Function ) );
+
+    });
+
 });
