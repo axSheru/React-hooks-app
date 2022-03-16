@@ -28,4 +28,12 @@ describe('Pruebas en el componente TodoListItem.', () => {
         
     });
 
+    test('debe de llamar la función handleToggle.', () => {
+
+        wrapper.find( 'p' ).simulate( 'click' );
+
+        expect( handleToggle ).toHaveBeenCalledWith( demoTodos[0].id );
+        
+    });
+
 });
