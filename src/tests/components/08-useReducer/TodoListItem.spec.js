@@ -20,4 +20,12 @@ describe('Pruebas en el componente TodoListItem.', () => {
 
     });
 
+    test('debe de llamar la función handleDelete.', () => {
+
+        wrapper.find( 'button' ).simulate( 'click' );
+
+        expect( handleDelete ).toHaveBeenCalledWith( demoTodos[0].id );
+        
+    });
+
 });
